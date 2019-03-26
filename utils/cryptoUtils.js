@@ -9,6 +9,7 @@ var generateToken = (data)=>{
 }
 
 var verifyToken = ( encData) =>{
+    console.log(encData)
     var data;
     try {
         data = jwt.verify(encData, process.env.SECRET_KEY);
@@ -16,6 +17,7 @@ var verifyToken = ( encData) =>{
     catch( err){
         console.error("Token Verification failed ", err)
     }
+    console.log(data);
     return data;
 }
 

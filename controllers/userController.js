@@ -126,7 +126,9 @@ var updateUser = (req, res) => {
         first_name: req.body.first_name,
         last_name: req.body.last_name
     }
-    userService
+    userService.updateUser(userUpdateData, (err, data)=>{
+        sendResponse(err,data,req,res);
+    })
 }
 module.exports = {
     createUserTable, login, signUp, validate , updateUser

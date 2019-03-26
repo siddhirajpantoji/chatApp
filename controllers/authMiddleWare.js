@@ -1,18 +1,21 @@
-const { body , validationResult, header} = require('express-validator/check')
+const {  validationResult, header} = require('express-validator/check')
 const messages = require('../utils/messages').USER_MESSAGES
 const cryptoUtils = require('../utils/cryptoUtils');
 var validate = ()=>{
     return [
-        header('Authorisation').exists().withMessage(messages.AUTH_INFO_MISSING).custom(value=>{
+        header('Authorization').exists().withMessage(messages.AUTH_INFO_MISSING).custom(value=>{
             return new Promise((resolve, reject )=>{
                 // Check here if the user exists or not 
+                console.log(value)
                 var bearerTokenArr = value.split(" ");
                 var token = bearerTokenArr[1];
+                console.log(typeof(token))
                 if( token ){
                     // Decypt Token first and then put it into JWT Verify 
-                    var decrypetd = cryptoUtils.decryptData(token);
-                    var raw  = cryptoUtils.verifyToken(decrypetd);
-                    if( raw ){
+                    var raw  = cryptoUtils.verifyToken(token);
+                    var decrypetd = cryptoUtils.decryptData(raw.data);
+                    
+                    if( decrypetd ){
                         resolve();
                     }
                     else{
