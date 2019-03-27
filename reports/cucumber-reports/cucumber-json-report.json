@@ -1,0 +1,110 @@
+[
+  {
+    "description": "    All scenarios for the 'getSearchResults' endpoint",
+    "keyword": "Feature",
+    "name": "getSearchResults",
+    "line": 2,
+    "id": "getsearchresults",
+    "tags": [
+      {
+        "name": "@smoke",
+        "line": 1
+      }
+    ],
+    "uri": "tests\\features\\login.feature",
+    "elements": [
+      {
+        "id": "getsearchresults;to-verify-match-status-in-response-for-various-inputs",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "To verify match status in response for various inputs",
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@validLogin",
+            "line": 5
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "tests\\step-definitions\\LoginSteps.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "create a request",
+            "match": {
+              "location": "tests\\step-definitions\\LoginSteps.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I hit endpoint with request",
+            "match": {
+              "location": "tests\\step-definitions\\LoginSteps.js:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "I should get 200 responseStatus",
+            "match": {
+              "location": "tests\\step-definitions\\LoginSteps.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "I should get value in response",
+            "match": {
+              "location": "tests\\step-definitions\\LoginSteps.js:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "tests\\step-definitions\\LoginSteps.js:35"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
