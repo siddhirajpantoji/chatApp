@@ -1,5 +1,3 @@
-// First App that loads 
-require('dotenv').config();
 
 var express = require('express');
 const expressValidator = require('express-validator')
@@ -19,12 +17,7 @@ app.use(expressValidator())
 app.use("/open",openRoutes);
 app.use("/api",authMiddleware.validate(),authMiddleware.authMiddleware, userRoutes);
 app.use("/createTable", ddlRoutes);
-app.listen(port, (err)=>{
-    if(err){
-        console.error("Unable to start setup in port "+ port, err)
-    }
-    else{
-        console.log("Server started at ", port);
-    }
-})
+
+module.exports = app;
+
 

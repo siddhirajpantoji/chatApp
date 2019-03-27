@@ -2,21 +2,28 @@
   "name": "chatApp",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "cucumber-html-reporter": "^4.0.5",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-validator": "^5.3.1",
     "hbs": "^4.0.3",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^7.9.0"
+    "mocha": "^6.0.2",
+    "pg": "^7.9.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "cucumber": "^5.1.0"
   }
 }
