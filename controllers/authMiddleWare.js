@@ -9,17 +9,18 @@ var validate = ()=>{
                 console.log(value)
                 var bearerTokenArr = value.split(" ");
                 var token = bearerTokenArr[1];
-                console.log(typeof(token))
                 if( token ){
                     // Decypt Token first and then put it into JWT Verify 
                     var raw  = cryptoUtils.verifyToken(token);
+                    if( !raw){
+                        reject(messages.USER_NOT_AUTHORISED)
+                    }
                     var decrypetd = cryptoUtils.decryptData(raw.data);
-                    
                     if( decrypetd ){
                         resolve();
                     }
                     else{
-                        reject(USER_MESSAGES.USER_NOT_AUTHORISED)
+                        reject(messages.USER_NOT_AUTHORISED)
                     }
                 }
                 else{

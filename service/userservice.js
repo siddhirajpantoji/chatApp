@@ -43,7 +43,22 @@ var login = (userdata, callback) => {
             user.token = undefined
             var tokenData = cryptoUtils.encryptData(user);
             token = cryptoUtils.generateToken(tokenData);
-            callback(null, { token })
+            user.token = token;
+            userDao.updateLastLogin(user, (err,data)=>{
+                // Update token for 
+                if( err){
+                    // failed to update last login 
+                    return callback({
+                        status:401,
+                        message:"User Not Verified ",
+                        err:err
+                    })
+                    //callback(result)
+                }
+                else{
+                    callback(null, { token })
+                }
+            })
         }
     })
 }

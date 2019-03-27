@@ -20,7 +20,7 @@ const USER_MESSAGES = {
     FIRST_NAME_REQ: "First Name required ",
     LAST_NAME_REQ: "First Name required ",
     CONFIRM_PASSWORD_REQ : "Confirm password is Compulsary ",
-    AUTH_INFO_MISSING : "Authentication info "+ this.IS_MISSING,
-    USER_NOT_AUTHORISED : "Authentication info "+ this.IS_MISSING
+    AUTH_INFO_MISSING : "Authentication info is missing ",
+    USER_NOT_AUTHORISED : "Authentication info invalid "
 }
 module.exports = {MESSAGES, USER_MESSAGES}
