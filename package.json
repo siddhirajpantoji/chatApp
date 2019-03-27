@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cucumber-js ./tests/features -r ./tests/step-definitions --tags @smoke --format json:./reports/cucumber-reports/cucumber-json-report.json",
     "start": "node server.js"
   },
   "keywords": [],
