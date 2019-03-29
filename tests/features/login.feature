@@ -1,8 +1,8 @@
-@smoke
+@login
 Feature: Login
     All scenarios for the 'login' endpoint
 
-    @validLogin
+    
     Scenario Outline: To verify match status in response for various inputs
         Given create a login request <Username> <Password>
         When I hit endpoint with request
