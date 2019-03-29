@@ -1,5 +1,5 @@
 const { body, validationResult, header } = require('express-validator/check')
-const userService = require('../service/userService')
+const userService = require('../service/userservice')
 const messages = require('../utils/messages').USER_MESSAGES
 /**
  * This is for Validation Apis and for fields , messages associated with it 
