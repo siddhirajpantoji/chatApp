@@ -38,8 +38,10 @@ jobs:
       # run tests!
       - run: npm test
 
+      - request-testing:
+          type: approval
       # Sample Deploy 
-      - aws-s3/copy:
-          from: bucket/build_asset.txt
-          to: 's3://my-s3-bucket-name'
-          arguments: '--dryrun'
+      # - aws-s3/copy:
+      #     from: bucket/build_asset.txt
+      #     to: 's3://my-s3-bucket-name'
+      #     arguments: '--dryrun'
