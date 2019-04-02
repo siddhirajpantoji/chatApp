@@ -6,7 +6,7 @@ var hitApi = (url , method , body , callback)=>{
         uri:url,
         json:body
     }, (error,response,body)=>{
-        console.log("Respone ka status "+response.statusCode);
+      //  console.log("Respone ka status "+response.statusCode);
         body.statusCode = response.statusCode;
         callback( error, body);
     })
