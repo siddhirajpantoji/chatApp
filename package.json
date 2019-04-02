@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "cucumber-js ./tests/features -r ./tests/step-definitions --tags  @login --format json:./reports/cucumber-reports/cucumber-json-report.json",
+    "test": "cucumber-js ./tests/features -r ./tests/step-definitions  --tags \"@signup or @login\" --format json:./reports/cucumber-reports/cucumber-json-report.json",
     "start": "node server.js"
   },
   "keywords": [],

@@ -8,7 +8,11 @@ const QUERIES = {
         USER_EXISTS :" Select  count(*) from chatting_user where username = $1 ",
         INSERT_USER :" INSERT INTO chatting_user (username, password, first_name, last_name ) values ($1, $2, $3, $4 ) returning * ",
         UPDATE_LAST_LOGIN :" UPDATE chatting_user set last_login = current_timestamp , token = $1 where username = $2  returning * "
+    },
+    HEALTH_CHECK :{
+        GET_DATE : "Select current_timestamp "
     }
+
 }
 
 module.exports = {QUERIES}

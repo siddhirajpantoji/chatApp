@@ -28,8 +28,9 @@ var server;
   })
     Given('create a login request {string} {string}', function (string, string2) {
         // Write code here that turns the phrase above into concrete actions
-        console.log("value of String 1 :"+ string);
-        console.log("value of String 2 :"+ string2);
+        console.log("Login Started here ")
+        // console.log("value of String 1 :"+ string);
+        // console.log("value of String 2 :"+ string2);
         var reqBody = {
           username:string,
           password:string2
@@ -46,8 +47,8 @@ var server;
               callback(err)
           }
           else{
-            console.log("Success in data ", data)
-            console.log(data.statusCode)
+            // console.log("Success in data ", data)
+            // console.log(data.statusCode)
             this.apiResponse = data;
             callback(null,data);
           }
@@ -63,7 +64,7 @@ var server;
       });
 
       Then('I should get value in response {int}', function (int) {
-          console.log("Value of Status ", int);
+        //  console.log("Value of Status ", int);
           expect(int).equal(this.apiResponse.statusCode)
         // Write code here that turns the phrase above into concrete actions
       //  return 'pending';
