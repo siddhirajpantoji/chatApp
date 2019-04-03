@@ -11,8 +11,15 @@ const QUERIES = {
     },
     HEALTH_CHECK :{
         GET_DATE : "Select current_timestamp "
+    },
+    MAGIC_WORDS :{
+        SELECT_ALL_BY_STATUS : " Select * from  MAGIC_WORDS ",
+        CREATE : "CREATE TABLE IF NOT EXISTS MAGIC_WORDS ( magic_word_id serial , magic_word text not null unique ) ",
+        DROP : "DROP TABLE IF EXISTS MAGIC_WORDS",
+        INSERT : "INSERT INTO MAGIC_WORDS ( magic_word  ) values ( $1 ) RETURNING * ",
+        DELETE : "DELETE FROM MAGIC_WORDS WHERE magic_word = $1 returning * ",
+        MAGIC_WORD_EXISTS :"Select count(*) from MAGIC_WORDS  where magic_word = $1"
     }
-
 }
 
 module.exports = {QUERIES}

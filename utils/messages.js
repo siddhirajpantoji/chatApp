@@ -23,4 +23,9 @@ const USER_MESSAGES = {
     AUTH_INFO_MISSING : "Authentication info is missing ",
     USER_NOT_AUTHORISED : "Authentication info invalid "
 }
-module.exports = {MESSAGES, USER_MESSAGES}
+
+const MAGIC_WORD = {
+    MAGIC_WORD_COMPULSARY : "Magic Words is compulsary "  ,
+    MAGIC_WORD_ALREADY_EXISTS : "Magic Word already exists "
+}
+module.exports = {MESSAGES, USER_MESSAGES, MAGIC_WORD}
