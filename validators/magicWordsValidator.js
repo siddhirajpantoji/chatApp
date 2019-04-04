@@ -1,6 +1,6 @@
 const { body, validationResult, header } = require('express-validator/check')
 const messages = require('../utils/messages').MAGIC_WORD
-
+const magicWordService = require('../service/magicWords')
 function createValidations(){
 
     return validate = ()=> {
@@ -8,8 +8,8 @@ function createValidations(){
         return [
             body('magic_words').exists().withMessage(messages.MAGIC_WORD_COMPULSARY).custom(value => {
                 return new Promise((resolve, reject) => {
-                    console.log("username validation ")
-                    userService.checkIfuserExists(value, (err, data) => {
+                  //  console.log("magicWord  validation ")
+                  magicWordService.checkIfMagicWordExists(value, (err, data) => {
                         if (err) {
                             reject(err)
                         }
@@ -18,7 +18,7 @@ function createValidations(){
                                 resolve();
                             }
                             else {
-                                reject(messages.USERNAME_IN_USE);
+                                reject(messages.MAGIC_WORD_ALREADY_EXISTS);
                             }
                         }
                     })
@@ -32,7 +32,24 @@ function editValidations() {
     return validate = () =>{
         // Allow if already exists 
         return [
-
+            body('magic_words').exists().withMessage(messages.MAGIC_WORD_COMPULSARY).custom(value => {
+                return new Promise((resolve, reject) => {
+                  //  console.log("magicWord  validation ")
+                  magicWordService.checkIfMagicWordExists(value, (err, data) => {
+                        if (err) {
+                            reject(err)
+                        }
+                        else {
+                            if (data) {
+                                resolve();
+                            }
+                            else {
+                                reject(messages.MAGIC_WORD_DOESNOT_EXISTS);
+                            }
+                        }
+                    })
+                })
+            })
         ]
     }
 }
@@ -40,11 +57,11 @@ function editValidations() {
 function deleteValidation(){
     // Allow if already Exists 
     return validate = ()=>{
-        return [
-
-        ]
+        return editValidations()();
     }
 }
 module.exports = {
     createValidations, editValidations, deleteValidation
 }
+
+//console.log(deleteValidation()());

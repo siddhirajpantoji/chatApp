@@ -12,8 +12,8 @@ var createMagicTable  = (callback)=>{
     })  
 }
 
-var insertIntoMagicTable =  (magic_word,callback ) => {
-    db.query(queries.MAGIC_WORDS.INSERT, [magic_word], (err,data)=>{
+var insertIntoMagicTable =  (wordInfo,callback ) => {
+    db.query(queries.MAGIC_WORDS.INSERT, [wordInfo.magic_word, wordInfo.user_id ], (err,data)=>{
         if( err){
             callback(err)
         } 
@@ -54,6 +54,17 @@ var getAllWords = (callback)=>{
         }
     })
 }
+
+var countWords = (word, callback ) =>{
+    db.query(queries.MAGIC_WORDS.MAGIC_WORD_EXISTS, [word], (err, data )=>{
+        if( err){
+            callback( err)
+        }
+        else{
+            callback( null , data.rows[0]);
+        }
+    })
+}
 module.exports = {
-    createMagicTable , insertIntoMagicTable , dropMagicTable, deleteFromMagicTable , getAllWords
+    createMagicTable , insertIntoMagicTable , dropMagicTable, deleteFromMagicTable , getAllWords , countWords
 }

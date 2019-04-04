@@ -14,9 +14,9 @@ var checkIfuserExists = (username, callback) => {
         }
         else {
             // Check count over here and return count only
-            console.log(data)
+            //console.log(data)
             exists = (data.count != 0);
-            console.log(exists);
+          //  console.log(exists);
             callback(null, exists)
         }
     })

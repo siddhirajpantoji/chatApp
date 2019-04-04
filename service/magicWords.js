@@ -59,6 +59,22 @@ var getAllWords = (callback)=>{
     })
 }
 
+var checkIfMagicWordExists = ( magic_word , callback)=>{
+    magicDao.countWords(magic_word, (err,data)=>{
+        if( err){
+            callback( {
+                status: 500, 
+                message :"Unable to get Magic word Count ",
+                err:err.stack
+            })
+        }
+        else{
+            exists = (data.count != 0);
+            callback( null, exists);
+        }
+    })
+}
+
 module.exports = {
-    createMagicWordsTable , insertIntoMagicTable , deleteFromMagicTable , getAllWords
+    createMagicWordsTable , insertIntoMagicTable , deleteFromMagicTable , getAllWords, checkIfMagicWordExists
 }

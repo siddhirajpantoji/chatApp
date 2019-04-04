@@ -26,6 +26,7 @@ const USER_MESSAGES = {
 
 const MAGIC_WORD = {
     MAGIC_WORD_COMPULSARY : "Magic Words is compulsary "  ,
-    MAGIC_WORD_ALREADY_EXISTS : "Magic Word already exists "
+    MAGIC_WORD_ALREADY_EXISTS : "Magic Word already exists ",
+    MAGIC_WORD_DOESNOT_EXISTS : "Magic Word doesnot  exists "
 }
 module.exports = {MESSAGES, USER_MESSAGES, MAGIC_WORD}
