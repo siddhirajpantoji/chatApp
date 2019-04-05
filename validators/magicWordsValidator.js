@@ -60,8 +60,11 @@ function deleteValidation(){
         return editValidations()();
     }
 }
+//This will be used as a factory to do the work 
 module.exports = {
-    createValidations, editValidations, deleteValidation
+    "POST":createValidations(),
+    "PUT" :editValidations(),
+    "DELETE": deleteValidation()
 }
 
 //console.log(deleteValidation()());

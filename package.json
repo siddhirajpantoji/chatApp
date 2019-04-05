@@ -1,5 +1,5 @@
 {
-  "name": "chatApp",
+  "name": "chatapp",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -19,7 +19,6 @@
     "express-validator": "^5.3.1",
     "hbs": "^4.0.3",
     "jsonwebtoken": "^8.5.1",
-    "mocha": "^6.0.2",
     "pg": "^7.9.0",
     "request": "^2.88.0"
   },

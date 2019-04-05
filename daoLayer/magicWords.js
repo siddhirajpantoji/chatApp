@@ -34,7 +34,7 @@ var dropMagicTable  = ( callback)=>{
     })
 }
 var deleteFromMagicTable = (magic_word , callback) =>{
-    db.query(queries.MAGIC_WORDS.DELETE, (err,data)=>{
+    db.query(queries.MAGIC_WORDS.DELETE,[magic_word], (err,data)=>{
         if( err ){
             callback(err)
         }

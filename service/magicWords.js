@@ -15,8 +15,8 @@ var createMagicWordsTable = (callback)=>{
     })
 }
 
-var insertIntoMagicTable = (magic_word , callback )=>{
-    magicDao.insertIntoMagicTable( magic_word , (err,data)=>{
+var insertIntoMagicTable = (word_info , callback )=>{
+    magicDao.insertIntoMagicTable( word_info , (err,data)=>{
         if( err ){
             callback({
                 status:500,
@@ -75,6 +75,20 @@ var checkIfMagicWordExists = ( magic_word , callback)=>{
     })
 }
 
+var dropMagicWordTable  = (callback)=>{
+    magicDao.dropMagicTable((err,data)=>{
+        if( err ){
+            callback( {
+                status: 500, 
+                message :"Unable to get Magic word Count ",
+                err:err.stack
+            })
+        }
+        else{
+            callback( null, "Table Dropped ")
+        }
+    })
+}
 module.exports = {
-    createMagicWordsTable , insertIntoMagicTable , deleteFromMagicTable , getAllWords, checkIfMagicWordExists
+    createMagicWordsTable , insertIntoMagicTable , deleteFromMagicTable , getAllWords, checkIfMagicWordExists, dropMagicWordTable
 }
