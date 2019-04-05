@@ -7,7 +7,7 @@ var validate = ()=>{
         header('Authorization').exists().withMessage(messages.AUTH_INFO_MISSING).custom((value, {req}) =>{
             return new Promise((resolve, reject )=>{
                 // Check here if the user exists or not 
-                console.log(value);
+                
                 var bearerTokenArr = value.split(' ');
                 var token = bearerTokenArr[1];
                 if( token ){
@@ -37,7 +37,7 @@ var authMiddleware= (req,res,next)=>{
     var errors = validationResult(req);
     console.log( req.user_id);
     if(!errors.isEmpty()){
-        return res.status(403).json(errors.array());
+        return res.status(401).json(errors.array());
         //return  responseHandler.ERRORGeneric(req,res,400,errors.array())
     }
     next();
