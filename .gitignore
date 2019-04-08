@@ -4,3 +4,4 @@ package-lock.json
 reports/
 .vscode/
 .eslintrc.json
+.serverless/

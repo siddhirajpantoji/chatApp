@@ -20,7 +20,8 @@
     "hbs": "^4.0.3",
     "jsonwebtoken": "^8.5.1",
     "pg": "^7.9.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "serverless-http": "^1.9.1"
   },
   "devDependencies": {
     "cucumber": "^5.1.0"
