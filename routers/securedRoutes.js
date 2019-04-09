@@ -5,10 +5,12 @@ var router  = express.Router();
 const userController = require('../controllers/userController');
 const magicWordsController = require('../controllers/magicWords');
 const magicWordValidators = require('../validators/magicWordsValidator');
+const userValidator = require('../validators/userValidator');
+const messages = require('../utils/messages').MESSAGES;
 // User Routes 
-router.route('/user').put(userController.validate.updateUser, userController.updateUser).all((req,res)=>{
+router.route('/user').put(userValidator.PUT, userController.updateUser).all((req,res)=>{
     res.status(405).json({
-        message:'Method is not supported '
+        message:messages.METHOD_NOT_SUPPORTED
     });
 });
 
@@ -17,7 +19,7 @@ router.route('/magic-word').get(magicWordsController.getAllWords)
 .post(magicWordValidators.POST(), magicWordsController.createMagicEntry)
 .delete(magicWordValidators.DELETE(), magicWordsController.deleteMagicWord).all((req,res)=>{
     res.status(405).json({
-        message:'Method is not supported '
+        message: messages.METHOD_NOT_SUPPORTED
     });
 });
 
