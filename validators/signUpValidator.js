@@ -1,8 +1,8 @@
 const { body } = require('express-validator/check');
 const messages = require('../utils/messages').USER_MESSAGES;
 const userService = require('../service/userservice');
-const validateSignUpAPI = ()=>{
-    [
+const validateSignUpAPI = () => {
+    return [
         body('username').exists().withMessage(messages.USERNAME_COMPULSARY).isEmail().withMessage(messages.USERNAME_MUST_BE_EMAIL).
             custom(value => {
                 return new Promise((resolve, reject) => {
@@ -36,5 +36,5 @@ const validateSignUpAPI = ()=>{
     ];
 };
 module.exports = {
-    POST:validateSignUpAPI
+    POST: validateSignUpAPI
 };
