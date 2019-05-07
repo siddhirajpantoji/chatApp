@@ -1,12 +1,13 @@
 const db = require('./db');
 const queries = require('./queries').QUERIES;
-
+const logger = require('winston_wrapper').getLogger('magic-words');
 var createMagicTable  = (callback)=>{
     db.query(queries.MAGIC_WORDS.CREATE, (err,data)=>{
         if( err){
             return callback( err);
         }
         else{
+            logger.error('Query :'+queries.MAGIC_WORDS.CREATE+'::Result::'+JSON.stringify(data));
             return callback( null,data);
         }
     });  
@@ -18,6 +19,7 @@ var insertIntoMagicTable =  (wordInfo,callback ) => {
             callback(err);
         } 
         else {
+            logger.error('Query :'+queries.MAGIC_WORDS.INSERT+'::Result::'+JSON.stringify(data.rows[0]));
             callback( null, data.rows[0]);
         }
     });
@@ -29,6 +31,7 @@ var dropMagicTable  = ( callback)=>{
             callback(err);
         }
         else{
+            logger.error('Query :'+queries.MAGIC_WORDS.DROP+'::Result::'+JSON.stringify(data));
             callback( null , data);
         }
     });
@@ -39,6 +42,7 @@ var deleteFromMagicTable = (magic_word , callback) =>{
             callback(err);
         }
         else{
+            logger.error('Query :'+queries.MAGIC_WORDS.DELETE+'::Result::'+JSON.stringify(data.rows[0]));
             callback( null , data.rows[0]);
         }
     });
@@ -50,6 +54,7 @@ var getAllWords = (callback)=>{
             callback(err);
         }
         else{
+            logger.error('Query :'+queries.MAGIC_WORDS.SELECT_ALL_BY_STATUS+'::Result::'+JSON.stringify(data.rows));
             callback( null , data.rows);
         }
     });
@@ -61,6 +66,7 @@ var countWords = (word, callback ) =>{
             callback( err);
         }
         else{
+            logger.error('Query :'+queries.MAGIC_WORDS.SELECT_ALL_BY_STATUS+'::Result::'+JSON.stringify(data.rows[0]));
             callback( null , data.rows[0]);
         }
     });

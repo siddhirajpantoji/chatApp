@@ -3,7 +3,7 @@ var express = require('express');
 const expressValidator = require('express-validator');
 const bodyparser= require('body-parser');
 const winston = require('winston_wrapper');
-var logger = winston.getLogger('app-file');
+
 const openRoutes = require('./routers/unsecuredRoutes');
 const authMiddleware = require('./controllers/authMiddleWare');
 const securedRoutes = require('./routers/securedRoutes');
@@ -16,7 +16,7 @@ let app = new express();
 app.use(bodyparser.json());
 app.use(expressValidator());
 app.use(winston.expressMiddleware);
-logger.info('Entered App File ');
+
 app.use('/open',openRoutes);
 app.use('/api',authMiddleware.validate(),authMiddleware.authMiddleware, securedRoutes);
 app.use('/createTable', ddlRoutes);

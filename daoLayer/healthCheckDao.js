@@ -11,7 +11,7 @@ var healthcheck = (callback) =>{
             callback(err);
         }
         else{
-            logger.error(JSON.stringify(data.rows[0]));
+            logger.error('Query :'+queries.HEALTH_CHECK+'::Result::'+JSON.stringify(data.rows[0]));
             callback( null, data.rows[0]);
         }
     });
