@@ -18,14 +18,13 @@ describe("UserService class", () => {
         });
     });
 
-    it.skip("login method - pass", () => {
+    it("login method - pass", () => {
         var userData = {
             username: 'akshay',
             password: 'admin'
         };
         userservice.login(userData, (error, result) => {
-            console.log("$$$$$$$ " + error);
-            console.log("%%%%% " + result);
+            expect(result.token).length.greaterThan(1)
         });
     });
 
@@ -49,6 +48,12 @@ describe("UserService class", () => {
             expect(error.status).to.equal(401);
             expect(error.message).to.equal("User Not Verified ");
             expect(error.err).to.equal("custom error");
+        });
+    });
+
+    it("createUserTable method - pass", () => {
+        userservice.createUserTable((error, result) => {
+            expect(result).to.equal("Table Created ")
         });
     });
 });

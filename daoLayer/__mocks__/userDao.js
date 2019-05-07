@@ -9,14 +9,7 @@ var userExists = (username, callback) => {
 }
 
 var createUserTable = (callback) => {
-    db.query(queries.USER.CREATE, (err, data) => {
-        if (err) {
-            callback(err)
-        } else {
-            //console.log(data.rows);
-            callback(null, data.rows);
-        }
-    })
+    callback(null, "success");
 }
 
 var createUser = (userData, callback) => {
@@ -31,13 +24,13 @@ var createUser = (userData, callback) => {
 }
 
 var updateLastLogin = (userData, callback) => {
-    db.query(queries.USER.UPDATE_LAST_LOGIN, [userData.token, userData.username], (err, data) => {
-        if (err) {
-            callback(err)
-        } else {
-            callback(null, data.rows)
-        }
-    })
+    if (userData.token != "" || userData.username != "") {
+        var data = [];
+        data.push(1);
+        callback(null, data);
+    } else {
+        callback("custom error");
+    }
 }
 
 var userLogin = (userData, callback) => {

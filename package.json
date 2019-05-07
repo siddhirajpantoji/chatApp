@@ -6,7 +6,7 @@
   "scripts": {
     "component-test": "cucumber-js ./tests/features -r ./tests/step-definitions   --format json:./reports/cucumber-reports/cucumber-json-report.json",
     "start": "node server.js",
-    "test": "jest",
+    "test": "jest --coverage",
     "cucumber-test": "./node_modules/.bin/babel src -d lib --ignore '**/*Steps.js' ./node_modules/.bin/nyc --silent node ./node_modules/.bin/cucumber-js"
   },
   "keywords": [],
