@@ -4,18 +4,19 @@
 
 const db = require('./db');
 const queries = require('./queries').QUERIES;
-
+var logger = require('winston_wrapper').getLogger('health-check');
 var healthcheck = (callback) =>{
     db.query(queries.HEALTH_CHECK.GET_DATE,(err,data)=>{
         if(err){
-            callback(err)
+            callback(err);
         }
         else{
+            logger.error(JSON.stringify(data.rows[0]));
             callback( null, data.rows[0]);
         }
-    })
-}
+    });
+};
 
 module.exports = {
     healthcheck
-}
+};
