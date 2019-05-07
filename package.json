@@ -4,8 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "cucumber-js ./tests/features -r ./tests/step-definitions   --format json:./reports/cucumber-reports/cucumber-json-report.json",
-    "start": "node server.js"
+    "component-test": "cucumber-js ./tests/features -r ./tests/step-definitions   --format json:./reports/cucumber-reports/cucumber-json-report.json",
+    "start": "node server.js",
+    "test": "jest --coverage",
+    "cucumber-test": "./node_modules/.bin/babel src -d lib --ignore '**/*Steps.js' ./node_modules/.bin/nyc --silent node ./node_modules/.bin/cucumber-js"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +28,8 @@
     "winston_wrapper": "git+https://github.com/siddhirajpantoji/testLogger.git"
   },
   "devDependencies": {
-    "cucumber": "^5.1.0"
+    "babel-cli": "^6.26.0",
+    "cucumber": "^5.1.0",
+    "jest": "^24.7.1"
   }
 }

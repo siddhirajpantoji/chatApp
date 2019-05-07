@@ -1,4 +1,3 @@
-
 var userDao = require('../daoLayer/userDao');
 var cryptoUtils = require('../utils/cryptoUtils')
 
@@ -11,12 +10,11 @@ var checkIfuserExists = (username, callback) => {
                 err: err
             }
             callback(result)
-        }
-        else {
+        } else {
             // Check count over here and return count only
             //console.log(data)
             exists = (data.count != 0);
-          //  console.log(exists);
+            //  console.log(exists);
             callback(null, exists)
         }
     })
@@ -31,12 +29,11 @@ var login = (userdata, callback) => {
                 err: err
             }
             return callback(result)
-        }
-        else {
-            if( !user){
+        } else {
+            if (!user) {
                 return callback({
-                    status:401,
-                    message:"User Not Verified "
+                    status: 401,
+                    message: "User Not Verified "
                 })
             }
             user.password = undefined
@@ -44,19 +41,20 @@ var login = (userdata, callback) => {
             var tokenData = cryptoUtils.encryptData(user);
             token = cryptoUtils.generateToken(tokenData);
             user.token = token;
-            userDao.updateLastLogin(user, (err,data)=>{
+            userDao.updateLastLogin(user, (err, data) => {
                 // Update token for 
-                if( err){
+                if (err) {
                     // failed to update last login 
                     return callback({
-                        status:401,
-                        message:"User Not Verified ",
-                        err:err
+                        status: 401,
+                        message: "User Not Verified ",
+                        err: err
                     })
                     //callback(result)
-                }
-                else{
-                    callback(null, { token })
+                } else {
+                    callback(null, {
+                        token
+                    })
                 }
             })
         }
@@ -64,7 +62,7 @@ var login = (userdata, callback) => {
 }
 
 var createUserTable = (callback) => {
-    userDao.createUserTable((err,data) => {
+    userDao.createUserTable((err, data) => {
         if (err) {
             result = {
                 status: 500,
@@ -72,8 +70,7 @@ var createUserTable = (callback) => {
                 err: err
             }
             callback(result);
-        }
-        else {
+        } else {
             callback(null, "Table Created ");
         }
     })
@@ -81,38 +78,40 @@ var createUserTable = (callback) => {
 var signUp = (userData, callback) => {
     userData.password = cryptoUtils.hashData(userData.password);
     userDao.createUser(userData, (err, data) => {
-        if( err){
+        if (err) {
             result = {
                 status: 500,
                 message: "User Not Created  ",
                 err: err
             }
             callback(result)
-        }
-        else{
+        } else {
             data.token = undefined
             data.password = undefined
-            callback( null, data);
+            callback(null, data);
         }
     })
 }
-var updateUser =( userData, callback) =>{
-     userDao.updateUser( userData , (err,data)=>{
-        if( err){
+var updateUser = (userData, callback) => {
+    userDao.updateUser(userData, (err, data) => {
+        if (err) {
             result = {
                 status: 500,
                 message: "User Not Upadted   ",
                 err: err
             }
             callback(result)
-        }
-        else{
+        } else {
             data.token = undefined
             data.password = undefined
-            callback( null, data);
+            callback(null, data);
         }
-     })
+    })
 }
 module.exports = {
-    checkIfuserExists, login, createUserTable, signUp , updateUser
+    checkIfuserExists,
+    login,
+    createUserTable,
+    signUp,
+    updateUser
 }

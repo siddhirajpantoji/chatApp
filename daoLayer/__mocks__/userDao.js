@@ -1,26 +1,15 @@
-const db = require('./db');
-const queries = require('./queries').QUERIES;
-
 var userExists = (username, callback) => {
-    db.query(queries.USER.USER_EXISTS, [username], (err, data) => {
-        if (err) {
-            callback(err)
-        } else {
-            console.log(data.rows);
-            callback(null, data.rows[0]);
-        }
-    })
+    if (username == "pravin") {
+        var data = [];
+        data.push(1);
+        callback(null, data);
+    } else {
+        callback("custom error");
+    }
 }
 
 var createUserTable = (callback) => {
-    db.query(queries.USER.CREATE, (err, data) => {
-        if (err) {
-            callback(err)
-        } else {
-            //console.log(data.rows);
-            callback(null, data.rows);
-        }
-    })
+    callback(null, "success");
 }
 
 var createUser = (userData, callback) => {
@@ -35,24 +24,30 @@ var createUser = (userData, callback) => {
 }
 
 var updateLastLogin = (userData, callback) => {
-    db.query(queries.USER.UPDATE_LAST_LOGIN, [userData.token, userData.username], (err, data) => {
-        if (err) {
-            callback(err)
-        } else {
-            callback(null, data.rows)
-        }
-    })
+    if (userData.token != "" || userData.username != "") {
+        var data = [];
+        data.push(1);
+        callback(null, data);
+    } else {
+        callback("custom error");
+    }
 }
 
 var userLogin = (userData, callback) => {
-    db.query(queries.USER.LOGIN, [userData.username, userData.password], (err, data) => {
-        if (err) {
-            console.error(err.stack)
-            callback(err)
+    if (userData.username.length != 0) {
+        var user;
+        if (userData.username == "pravin") {
+            callback(null, user)
         } else {
-            callback(null, data.rows[0]);
+            user = {
+                password: 'pravin',
+                token: 'asldjahosdihapkjhaskldf'
+            };
+            callback(null, user)
         }
-    })
+    } else {
+        callback("custom error");
+    }
 }
 
 var updateUser = (userData, callback) => {
@@ -65,6 +60,7 @@ var updateUser = (userData, callback) => {
         }
     })
 }
+
 module.exports = {
     userExists,
     createUser,
