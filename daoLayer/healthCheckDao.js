@@ -8,7 +8,7 @@ const queries = require('./queries').QUERIES;
 var healthcheck = (callback) =>{
     db.query(queries.HEALTH_CHECK.GET_DATE,(err,data)=>{
         if(err){
-            callback(err)
+            callback(err);
         }
         else{
             callback( null, data.rows[0]);

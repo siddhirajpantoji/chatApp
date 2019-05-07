@@ -1,15 +1,11 @@
-const db = require('./db');
-const queries = require('./queries').QUERIES;
-
 var userExists = (username, callback) => {
-    db.query(queries.USER.USER_EXISTS, [username], (err, data) => {
-        if (err) {
-            callback(err)
-        } else {
-            console.log(data.rows);
-            callback(null, data.rows[0]);
-        }
-    })
+    if (username == "pravin") {
+        var data = [];
+        data.push(1);
+        callback(null, data);
+    } else {
+        callback("custom error");
+    }
 }
 
 var createUserTable = (callback) => {
@@ -45,14 +41,20 @@ var updateLastLogin = (userData, callback) => {
 }
 
 var userLogin = (userData, callback) => {
-    db.query(queries.USER.LOGIN, [userData.username, userData.password], (err, data) => {
-        if (err) {
-            console.error(err.stack)
-            callback(err)
+    if (userData.username.length != 0) {
+        var user;
+        if (userData.username == "pravin") {
+            callback(null, user)
         } else {
-            callback(null, data.rows[0]);
+            user = {
+                password: 'pravin',
+                token: 'asldjahosdihapkjhaskldf'
+            };
+            callback(null, user)
         }
-    })
+    } else {
+        callback("custom error");
+    }
 }
 
 var updateUser = (userData, callback) => {
@@ -65,6 +67,7 @@ var updateUser = (userData, callback) => {
         }
     })
 }
+
 module.exports = {
     userExists,
     createUser,
