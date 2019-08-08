@@ -5,3 +5,4 @@ reports/
 .vscode/
 .serverless/
 *.log
+coverage
